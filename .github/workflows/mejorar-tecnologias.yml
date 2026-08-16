@@ -1,0 +1,38 @@
+name: Mejorar tecnologías
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: contains(github.event.head_commit.message, 'Preparar mejora de tecnologías')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Actualizar tecnologías y CV
+        shell: python
+        run: |
+          from pathlib import Path
+          import base64
+          p=Path('index.html')
+          t=p.read_text(encoding='utf-8')
+          start='<section class="wrap section" id="tecnologias">'
+          end='<section class="wrap section" id="metodo">'
+          a=t.find(start)
+          b=t.find(end,a)
+          if a==-1 or b==-1:
+              raise SystemExit('No se encontró la sección de tecnologías')
+          new=base64.b64decode('"+b64+"').decode('utf-8')
+          t=t[:a]+new+t[b:]
+          p.write_text(t,encoding='utf-8')
+      - name: Publicar
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Mejorar tecnologías y separar CV"
+          git push

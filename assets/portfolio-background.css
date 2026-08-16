@@ -1,0 +1,32 @@
+/* Fondo tecnológico del portafolio */
+html{background:#080b12}
+body{position:relative;isolation:isolate;background:
+radial-gradient(circle at 12% 8%,rgba(105,240,194,.08),transparent 28%),
+radial-gradient(circle at 88% 12%,rgba(125,168,255,.10),transparent 30%),
+radial-gradient(circle at 72% 62%,rgba(154,125,255,.07),transparent 32%),
+linear-gradient(180deg,#080b12 0%,#090f18 48%,#080b12 100%)!important}
+body:before{content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;background-image:
+linear-gradient(rgba(125,168,255,.025) 1px,transparent 1px),
+linear-gradient(90deg,rgba(125,168,255,.025) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.88),rgba(0,0,0,.35) 78%,transparent)}
+body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:
+radial-gradient(circle at 8% 18%,rgba(105,240,194,.30) 0 1px,transparent 2px),
+radial-gradient(circle at 22% 34%,rgba(125,168,255,.27) 0 1px,transparent 2px),
+radial-gradient(circle at 79% 21%,rgba(154,125,255,.32) 0 1px,transparent 2px),
+radial-gradient(circle at 91% 48%,rgba(105,240,194,.24) 0 1px,transparent 2px),
+radial-gradient(circle at 15% 73%,rgba(125,168,255,.25) 0 1px,transparent 2px),
+radial-gradient(circle at 67% 86%,rgba(154,125,255,.26) 0 1px,transparent 2px),
+linear-gradient(113deg,transparent 0 18%,rgba(105,240,194,.045) 18.1% 18.2%,transparent 18.3% 100%),
+linear-gradient(151deg,transparent 0 38%,rgba(125,168,255,.04) 38.1% 38.2%,transparent 38.3% 100%),
+linear-gradient(28deg,transparent 0 71%,rgba(154,125,255,.035) 71.1% 71.2%,transparent 71.3% 100%);opacity:.82}
+.top{background:rgba(8,11,18,.84)!important;box-shadow:0 10px 34px rgba(0,0,0,.22)}
+.hero{background:
+radial-gradient(circle at 84% 10%,rgba(125,168,255,.18),transparent 31%),
+radial-gradient(circle at 10% 25%,rgba(105,240,194,.11),transparent 27%),
+radial-gradient(circle at 64% 88%,rgba(154,125,255,.09),transparent 28%),
+linear-gradient(180deg,rgba(11,17,27,.88),rgba(8,11,18,.78))!important}
+.section{position:relative}
+.section:before{content:"";position:absolute;inset:8% -14% auto auto;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(125,168,255,.045),transparent 68%);pointer-events:none;z-index:-1}
+.card,.aboutMain,.aboutCard,.case,.metric,.timelineCard,.currentRole,.contactBox{backdrop-filter:blur(8px)}
+.card,.aboutMain,.aboutCard,.case,.metric,.timelineCard{background:linear-gradient(180deg,rgba(20,30,45,.90),rgba(16,23,34,.90))!important}
+@media(max-width:760px){body:before{background-size:36px 36px}body:after{opacity:.58}.section:before{width:220px;height:220px}}
+@media(prefers-reduced-motion:reduce){body:before,body:after{position:absolute}}

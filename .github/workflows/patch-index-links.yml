@@ -1,0 +1,51 @@
+name: Aplicar enlaces de navegación
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  patch-index:
+    if: contains(github.event.head_commit.message, 'Aplicar enlaces de navegación')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Actualizar navegación y accesos
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          old_nav = '<div class="links" id="navLinks"><a href="#inicio">Inicio</a><a href="#sobre-mi">Sobre mí</a><a href="#recorrido">Recorrido</a><a href="#proyectos">Proyectos</a><a href="#it">Experiencia</a><a href="#tecnologias">Tecnologías</a><a href="cv.html">CV</a><a href="#contacto">Contacto</a></div>'
+          new_nav = '<div class="links" id="navLinks"><a href="#sobre-mi">Sobre mí</a><a href="#recorrido">Recorrido</a><a href="#proyectos">Proyectos</a><a href="equipo.html">Grupo de trabajo</a><a href="#it">Experiencia</a><a href="#tecnologias">Tecnologías</a><a href="cv.html">CV</a><a href="#contacto">Contacto</a></div>'
+
+          old_actions = '<div class="actions"><a class="btn primary" href="#proyectos">Ver proyectos</a><a class="btn ghost" href="cv.html">Ver mi CV</a><a class="btn ghost" href="#contacto">Contactarme</a></div>'
+          new_actions = '<div class="actions"><a class="btn primary" href="#proyectos">Ver proyectos</a><a class="btn ghost" href="cv.html">Ver mi CV</a><a class="btn ghost" href="equipo.html">Grupo de trabajo</a><a class="btn ghost" href="#contacto">Contactarme</a></div>'
+
+          project_end = '<div class="cardActions"><a class="btn accent" href="projects/automation-lab.html">Ver caso de estudio →</a><a class="btn ghost" href="projects/automation-lab.html#codigo">Ver código →</a></div></article></div></section>'
+          project_end_new = '<div class="cardActions"><a class="btn accent" href="projects/automation-lab.html">Ver caso de estudio →</a><a class="btn ghost" href="projects/automation-lab.html#codigo">Ver código →</a></div></article></div><div class="actions" style="justify-content:center;margin-top:26px"><a class="btn primary" href="projects.html">Ver todos los proyectos →</a></div></section>'
+
+          for old, new, label in [
+              (old_nav, new_nav, 'menú superior'),
+              (old_actions, new_actions, 'botones principales'),
+              (project_end, project_end_new, 'botón todos los proyectos'),
+          ]:
+              if old not in text:
+                  raise SystemExit(f'No se encontró el bloque esperado: {label}')
+              text = text.replace(old, new, 1)
+
+          path.write_text(text, encoding='utf-8')
+      - name: Publicar cambio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Agregar accesos a equipo y proyectos"
+          git push

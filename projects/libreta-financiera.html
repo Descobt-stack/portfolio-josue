@@ -1,0 +1,74 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080b12"><meta name="description" content="Caso de estudio: Mi Libreta Financiera"><title>Mi Libreta Financiera · Josue Manuel Villarruel Flores</title><style>
+:root{--bg:#080b12;--soft:#0b111b;--panel:#101722;--panel2:#141e2d;--line:#253149;--text:#f6f9fc;--muted:#9dacbf;--accent:#69f0c2;--blue:#7da8ff;--warn:#ffd479;--max:1060px;--read:820px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:76px}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.68;overflow-x:hidden}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 36px));margin-inline:auto}.top{position:sticky;top:0;z-index:20;background:rgba(8,11,18,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}nav{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-weight:950;letter-spacing:.065em;font-size:.84rem}.brand i{font-style:normal;color:var(--accent)}.links{display:flex;gap:20px;color:var(--muted);font-size:.9rem}.links a:hover{color:var(--text)}
+.caseHero{padding:58px 0 46px;border-bottom:1px solid var(--line);text-align:center;background:radial-gradient(circle at 84% 10%,rgba(125,168,255,.13),transparent 31%),radial-gradient(circle at 10% 25%,rgba(105,240,194,.08),transparent 26%),linear-gradient(180deg,var(--soft),var(--bg))}.crumb{display:inline-block;color:var(--muted);font-size:.86rem;margin-bottom:22px}.crumb:hover{color:var(--accent)}.eyebrow,.tag{color:var(--accent);font-size:.72rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}.caseHero h1{font-size:clamp(2.8rem,6vw,5.4rem);line-height:.95;letter-spacing:-.05em;margin:15px auto 18px;max-width:900px}.caseHero p{color:var(--muted);font-size:clamp(1rem,1.35vw,1.14rem);max-width:760px;margin:0 auto}.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:23px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 16px;border-radius:12px;border:1px solid var(--line);font-weight:850;background:rgba(16,23,34,.55)}.btn.primary{background:var(--text);color:#071018;border-color:var(--text)}.btn.accent{color:var(--accent)}.btn.lock{color:var(--warn);border-color:rgba(255,212,121,.35);background:rgba(255,212,121,.06);cursor:default}.statusline{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:18px}.chip{border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:var(--muted);font-size:.77rem}.chip.ok{color:var(--accent)}.chip.warn{color:var(--warn);border-color:rgba(255,212,121,.3)}
+main{padding:48px 0 72px}.content{width:min(var(--max),calc(100% - 36px));margin-inline:auto}.sectionCard{border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,rgba(20,30,45,.86),rgba(16,23,34,.92));padding:26px;margin:0 auto 18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.018)}.sectionCard>h2{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.12;margin:0 0 14px;letter-spacing:-.02em}.sectionCard>h3,.codeUnit h3{margin:20px 0 8px}.sectionCard p,.sectionCard li{color:var(--muted)}.sectionCard p{max-width:var(--read)}.sectionCard ul{padding-left:21px;margin:12px 0}.sectionCard li+li{margin-top:5px}.centerIntro{text-align:center}.centerIntro p{margin-inline:auto}.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}.subcard{border:1px solid var(--line);border-radius:16px;padding:18px;background:rgba(8,11,18,.27);min-width:0}.subcard h3{margin:0 0 8px;font-size:1.03rem}.subcard p{margin:0}.kicker{color:var(--accent);font-weight:850}.lockbox{border:1px solid rgba(255,212,121,.35);background:rgba(255,212,121,.06);border-radius:16px;padding:17px;color:var(--warn);margin-top:18px}.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:16px}.fact{border:1px solid var(--line);background:rgba(8,11,18,.26);border-radius:14px;padding:14px;min-width:0}.fact b{display:block;font-size:.88rem}.fact span{display:block;color:var(--muted);font-size:.82rem;margin-top:4px}
+.codeIntro{max-width:var(--read);margin-bottom:18px}.codeUnit{border-top:1px solid var(--line);padding-top:18px;margin-top:18px}.codeUnit:first-of-type{border-top:0;padding-top:0}.codeNote{font-size:.88rem;color:var(--muted);max-width:var(--read)}.codebox{max-width:100%;background:#05080d;border:1px solid var(--line);border-radius:16px;overflow-x:auto;overflow-y:hidden;margin:11px 0 8px}.codebox pre{margin:0;padding:18px;color:#d7e4f5;font:13px/1.58 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;white-space:pre;tab-size:2;min-width:0}.codebox code{font:inherit}.codeMeta{color:var(--muted);font-size:.8rem;margin:5px 2px 0}.highlight{color:var(--accent)}
+.tools{display:flex;flex-wrap:wrap;gap:8px}.pill{border:1px solid var(--line);background:rgba(8,11,18,.26);color:var(--muted);padding:8px 11px;border-radius:999px;font-size:.84rem}.caseGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.case{border:1px solid var(--line);border-radius:16px;padding:18px;background:rgba(8,11,18,.26)}.case h3{margin:0 0 7px;font-size:1rem}.case p{margin:0;color:var(--muted);font-size:.92rem}.footer{border-top:1px solid var(--line);padding:28px 0 45px;color:var(--muted);display:flex;justify-content:space-between;gap:20px;font-size:.84rem}
+@media(max-width:850px){.split,.caseGrid{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}}@media(max-width:620px){.wrap,.content{width:calc(100% - 22px)}nav{min-height:60px}.brand{font-size:.7rem;max-width:68%}.links{display:none}.caseHero{padding:42px 0 36px}.caseHero h1{font-size:clamp(2.45rem,13vw,3.7rem)}.sectionCard{padding:19px;border-radius:17px}.facts{grid-template-columns:1fr}.actions{display:grid}.actions .btn{width:100%}.codebox pre{font-size:12px;padding:15px}.footer{display:block}.footer div+div{margin-top:7px}}
+</style></head><body>
+<header class="top"><nav class="wrap"><a class="brand" href="../index.html">JOSUE MANUEL VILLARRUEL FLORES<i>.</i></a><div class="links"><a href="../index.html#proyectos">Proyectos</a><a href="../index.html#it">Experiencia IT</a></div></nav></header>
+<section class="caseHero"><div class="wrap"><a class="crumb" href="../index.html#proyectos">← Volver al portafolio</a><div class="eyebrow">React · TypeScript · PWA · Local-first</div><h1>Mi Libreta Financiera</h1><p>Construí esta aplicación por fases pensando en personas que no son expertas en finanzas. Mi prioridad ha sido mantener claridad, privacidad y reglas de negocio que pueda validar.</p><div class="statusline"><span class="chip warn">Demo privada 🔒</span><span class="chip ok">Código histórico seleccionado</span></div><div class="actions"><a class="btn primary" href="#codigo">Ver código seleccionado ↓</a><span class="btn lock">Demo actual privada 🔒</span></div></div></section>
+<main><div class="content">
+<section class="sectionCard centerIntro"><h2>El problema</h2><p>Quería crear una herramienta financiera fácil de entender para personas que no quieren usar una hoja de cálculo ni conectar sus cuentas bancarias. Busqué que se sintiera como una libreta: registrar, separar, corregir y revisar sin esconder la lógica del dinero.</p><div class="facts"><div class="fact"><b>Enfoque</b><span>Local-first y privacidad</span></div><div class="fact"><b>Cliente</b><span>React + TypeScript</span></div><div class="fact"><b>Persistencia</b><span>IndexedDB</span></div><div class="fact"><b>Servicios mínimos</b><span>D1 / Drizzle / Push</span></div></div></section>
+<section class="sectionCard"><h2>Qué construí</h2><div class="split"><div class="subcard"><h3>Dinero y reglas</h3><ul><li>Ingresos, gastos y transferencias con propósito obligatorio.</li><li>Apartados disponibles y reservados.</li><li>Validación de saldo antes de gastar o transferir.</li><li>Historial, correcciones y motivo de cambio.</li></ul></div><div class="subcard"><h3>Producto y experiencia</h3><ul><li>Pagos/tarjetas identificados por alias.</li><li>Objetivos, respaldos y tutorial guiado.</li><li>Evolución hacia múltiples libretas y comparación.</li><li>Pruebas con usuarios y cambios por feedback.</li></ul></div></div></section>
+<section class="sectionCard"><h2>Arquitectura y decisiones</h2><div class="split"><div class="subcard"><h3>Cliente</h3><p>React + TypeScript, PWA y almacenamiento local. Diseñé los registros financieros principales para que permanezcan en el dispositivo.</p></div><div class="subcard"><h3>Servicios auxiliares</h3><p>Uso Cloudflare D1 / Drizzle solo para funciones mínimas de beta, telemetría, feedback y recordatorios; no quiero convertir la nube en el libro contable principal.</p></div></div><p><span class="kicker">Decisión clave:</span> decidí separar los datos financieros sensibles de los servicios de beta y analítica.</p><div class="lockbox">🔒 <b>Demo actual privada.</b> El portafolio no enlaza la versión avanzada. Las muestras públicas provienen de una versión histórica temprana y sanitizada.</div></section>
+<section class="sectionCard"><h2>Evolución</h2><ul><li><b>Fase 1:</b> edición, borrado, recálculo y saldos claros.</li><li><b>Fases 2–4:</b> claridad visual, pagos/recordatorios y objetivos.</li><li><b>Fase 5:</b> múltiples libretas y comparación.</li><li><b>Trabajo posterior:</b> tutorial, configuración y funciones más complejas mantenidas privadas.</li></ul></section>
+<section class="sectionCard" id="codigo"><h2>Muestra de código</h2><p class="codeIntro">No publico el repositorio actual completo. En su lugar, muestro partes representativas de una versión histórica v1.0: modelado, persistencia, reglas de negocio y separación de telemetría.</p>
+<div class="codeUnit"><h3>1 · Modelo tipado del dominio</h3><p class="codeNote">Representa movimientos y relaciones entre apartados sin depender de texto libre para la lógica principal.</p><div class="codebox"><pre><code>export type LocalMovementKind = &quot;ingreso&quot; | &quot;gasto&quot; | &quot;transferencia&quot;;
+export type LocalPocketRole = &quot;available&quot; | &quot;reserved&quot;;
+
+export type LocalTransaction = {
+  id: string;
+  kind: LocalMovementKind;
+  amountCents: number;
+  sourcePocketId: string | null;
+  targetPocketId: string | null;
+  purpose: string;
+  occurredAt: string;
+  changeReason: string | null;
+};</code></pre></div><p class="codeMeta">TypeScript · versión histórica v1.0</p></div>
+<div class="codeUnit"><h3>2 · Persistencia local transaccional</h3><p class="codeNote">Centraliza cambios de estado, actualiza la marca temporal y cierra la base de datos incluso si algo falla.</p><div class="codebox"><pre><code>async function mutateState(
+  change: (state: LocalNotebook) =&gt; void
+): Promise&lt;LocalNotebookSnapshot&gt; {
+  const database = await openDatabase();
+  try {
+    const { state, transaction, store } =
+      await readState(database, &quot;readwrite&quot;);
+
+    change(state);
+    state.updatedAt = new Date().toISOString();
+    store.put(state, STATE_KEY);
+    await finishTransaction(transaction);
+
+    return publicSnapshot(state);
+  } finally {
+    database.close();
+  }
+}</code></pre></div></div>
+<div class="codeUnit"><h3>3 · Validaciones de negocio</h3><p class="codeNote">Antes de modificar saldos se validan cantidad, propósito, existencia del apartado y saldo suficiente.</p><div class="codebox"><pre><code>if (!state.setupCompleted || cents &lt; 1)
+  throw new Error(&quot;Escribe una cantidad mayor a cero.&quot;);
+
+if (!purpose)
+  throw new Error(&quot;Es obligatorio indicar para qué es el movimiento.&quot;);
+
+const source = state.pockets.find(
+  pocket =&gt; pocket.id === input.sourcePocketId
+);
+
+if ((input.kind === &quot;gasto&quot; || input.kind === &quot;transferencia&quot;)
+    &amp;&amp; source.balanceCents &lt; cents) {
+  throw new Error(&quot;Ese apartado no tiene saldo suficiente.&quot;);
+}</code></pre></div></div>
+<div class="codeUnit"><h3>4 · Separación de telemetría y finanzas</h3><p class="codeNote">La propia estructura documenta que la beta no debe guardar balances, notas financieras ni datos personales innecesarios.</p><div class="codebox"><pre><code>// Beta diagnostics are intentionally separated from financial records.
+// They use a random installation id and never store balances, amounts,
+// notes, card aliases, photographs or email addresses.
+export const betaInstallations = sqliteTable(&quot;beta_installations&quot;, {
+  installId: text(&quot;install_id&quot;).primaryKey(),
+  platform: text(&quot;platform&quot;).notNull().default(&quot;unknown&quot;),
+  appVersion: text(&quot;app_version&quot;).notNull().default(&quot;beta-1&quot;),
+  firstSeenAt: text(&quot;first_seen_at&quot;).notNull().default(sql`CURRENT_TIMESTAMP`),
+  lastSeenAt: text(&quot;last_seen_at&quot;).notNull().default(sql`CURRENT_TIMESTAMP`),
+});</code></pre></div></div></section>
+<section class="sectionCard"><h2>Qué demuestra a un entrevistador</h2><div class="caseGrid"><div class="case"><h3>Modelado de datos</h3><p>Tipos claros para movimientos, apartados y estados de la aplicación.</p></div><div class="case"><h3>Privacidad por diseño</h3><p>Separación entre datos locales y servicios auxiliares.</p></div><div class="case"><h3>Reglas de negocio</h3><p>Validación explícita antes de mutar saldos y registros.</p></div><div class="case"><h3>Evolución de producto</h3><p>Desarrollo por fases, migraciones y respuesta a feedback de usuarios.</p></div></div></section></div></main>
+<footer class="wrap footer"><div>Josue Manuel Villarruel Flores · Caso de estudio</div><div>Código seleccionado · Datos sensibles protegidos</div></footer></body></html>

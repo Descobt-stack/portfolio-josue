@@ -1,0 +1,63 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080b12"><meta name="description" content="Caso de estudio: NOVA Warframe Builder"><title>NOVA Warframe Builder · Josue Manuel Villarruel Flores</title><style>
+:root{--bg:#080b12;--soft:#0b111b;--panel:#101722;--panel2:#141e2d;--line:#253149;--text:#f6f9fc;--muted:#9dacbf;--accent:#69f0c2;--blue:#7da8ff;--warn:#ffd479;--max:1060px;--read:820px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:76px}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.68;overflow-x:hidden}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 36px));margin-inline:auto}.top{position:sticky;top:0;z-index:20;background:rgba(8,11,18,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}nav{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-weight:950;letter-spacing:.065em;font-size:.84rem}.brand i{font-style:normal;color:var(--accent)}.links{display:flex;gap:20px;color:var(--muted);font-size:.9rem}.links a:hover{color:var(--text)}
+.caseHero{padding:58px 0 46px;border-bottom:1px solid var(--line);text-align:center;background:radial-gradient(circle at 84% 10%,rgba(125,168,255,.13),transparent 31%),radial-gradient(circle at 10% 25%,rgba(105,240,194,.08),transparent 26%),linear-gradient(180deg,var(--soft),var(--bg))}.crumb{display:inline-block;color:var(--muted);font-size:.86rem;margin-bottom:22px}.crumb:hover{color:var(--accent)}.eyebrow,.tag{color:var(--accent);font-size:.72rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}.caseHero h1{font-size:clamp(2.8rem,6vw,5.4rem);line-height:.95;letter-spacing:-.05em;margin:15px auto 18px;max-width:900px}.caseHero p{color:var(--muted);font-size:clamp(1rem,1.35vw,1.14rem);max-width:760px;margin:0 auto}.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:23px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 16px;border-radius:12px;border:1px solid var(--line);font-weight:850;background:rgba(16,23,34,.55)}.btn.primary{background:var(--text);color:#071018;border-color:var(--text)}.btn.accent{color:var(--accent)}.btn.lock{color:var(--warn);border-color:rgba(255,212,121,.35);background:rgba(255,212,121,.06);cursor:default}.statusline{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:18px}.chip{border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:var(--muted);font-size:.77rem}.chip.ok{color:var(--accent)}.chip.warn{color:var(--warn);border-color:rgba(255,212,121,.3)}
+main{padding:48px 0 72px}.content{width:min(var(--max),calc(100% - 36px));margin-inline:auto}.sectionCard{border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,rgba(20,30,45,.86),rgba(16,23,34,.92));padding:26px;margin:0 auto 18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.018)}.sectionCard>h2{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.12;margin:0 0 14px;letter-spacing:-.02em}.sectionCard>h3,.codeUnit h3{margin:20px 0 8px}.sectionCard p,.sectionCard li{color:var(--muted)}.sectionCard p{max-width:var(--read)}.sectionCard ul{padding-left:21px;margin:12px 0}.sectionCard li+li{margin-top:5px}.centerIntro{text-align:center}.centerIntro p{margin-inline:auto}.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}.subcard{border:1px solid var(--line);border-radius:16px;padding:18px;background:rgba(8,11,18,.27);min-width:0}.subcard h3{margin:0 0 8px;font-size:1.03rem}.subcard p{margin:0}.kicker{color:var(--accent);font-weight:850}.lockbox{border:1px solid rgba(255,212,121,.35);background:rgba(255,212,121,.06);border-radius:16px;padding:17px;color:var(--warn);margin-top:18px}.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:16px}.fact{border:1px solid var(--line);background:rgba(8,11,18,.26);border-radius:14px;padding:14px;min-width:0}.fact b{display:block;font-size:.88rem}.fact span{display:block;color:var(--muted);font-size:.82rem;margin-top:4px}
+.codeIntro{max-width:var(--read);margin-bottom:18px}.codeUnit{border-top:1px solid var(--line);padding-top:18px;margin-top:18px}.codeUnit:first-of-type{border-top:0;padding-top:0}.codeNote{font-size:.88rem;color:var(--muted);max-width:var(--read)}.codebox{max-width:100%;background:#05080d;border:1px solid var(--line);border-radius:16px;overflow-x:auto;overflow-y:hidden;margin:11px 0 8px}.codebox pre{margin:0;padding:18px;color:#d7e4f5;font:13px/1.58 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;white-space:pre;tab-size:2;min-width:0}.codebox code{font:inherit}.codeMeta{color:var(--muted);font-size:.8rem;margin:5px 2px 0}.highlight{color:var(--accent)}
+.tools{display:flex;flex-wrap:wrap;gap:8px}.pill{border:1px solid var(--line);background:rgba(8,11,18,.26);color:var(--muted);padding:8px 11px;border-radius:999px;font-size:.84rem}.caseGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.case{border:1px solid var(--line);border-radius:16px;padding:18px;background:rgba(8,11,18,.26)}.case h3{margin:0 0 7px;font-size:1rem}.case p{margin:0;color:var(--muted);font-size:.92rem}.footer{border-top:1px solid var(--line);padding:28px 0 45px;color:var(--muted);display:flex;justify-content:space-between;gap:20px;font-size:.84rem}
+@media(max-width:850px){.split,.caseGrid{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}}@media(max-width:620px){.wrap,.content{width:calc(100% - 22px)}nav{min-height:60px}.brand{font-size:.7rem;max-width:68%}.links{display:none}.caseHero{padding:42px 0 36px}.caseHero h1{font-size:clamp(2.45rem,13vw,3.7rem)}.sectionCard{padding:19px;border-radius:17px}.facts{grid-template-columns:1fr}.actions{display:grid}.actions .btn{width:100%}.codebox pre{font-size:12px;padding:15px}.footer{display:block}.footer div+div{margin-top:7px}}
+</style></head><body>
+<header class="top"><nav class="wrap"><a class="brand" href="../index.html">JOSUE MANUEL VILLARRUEL FLORES<i>.</i></a><div class="links"><a href="../index.html#proyectos">Proyectos</a><a href="../index.html#it">Experiencia IT</a></div></nav></header>
+<section class="caseHero"><div class="wrap"><a class="crumb" href="../index.html#proyectos">← Volver al portafolio</a><div class="eyebrow">Gaming · JavaScript · Bilingüe · Offline</div><h1>NOVA Warframe Builder</h1><p>Construí este builder de Warframe con presets, edición local y datos bilingües. Empecé con una primera versión funcional y la fui ampliando con cada iteración.</p><div class="statusline"><span class="chip warn">Demo privada 🔒</span><span class="chip ok">Código histórico seleccionado</span></div><div class="actions"><a class="btn primary" href="#codigo">Ver código seleccionado ↓</a></div></div></section>
+<main><div class="content">
+<section class="sectionCard centerIntro"><h2>El problema</h2><p>Warframe mezcla Mods, Arcanos, Helminth, Fragmentos y estadísticas que cambian durante el combate. Mi objetivo fue convertir esa complejidad en una interfaz compacta, bilingüe y fácil de explicar.</p><div class="facts"><div class="fact"><b>Modo</b><span>Local / offline</span></div><div class="fact"><b>UI</b><span>HTML + CSS + JavaScript</span></div><div class="fact"><b>Persistencia</b><span>localStorage + JSON</span></div><div class="fact"><b>Evolución</b><span>v1.0 → v1.9</span></div></div></section>
+<section class="sectionCard"><h2>Funciones principales</h2><div class="split"><div class="subcard"><h3>Construcción de builds</h3><ul><li>Presets protegidos y builds personales editables.</li><li>Aura, Exilus, Mods, Arcanos, Helminth y Fragmentos.</li><li>Importación/exportación JSON.</li></ul></div><div class="subcard"><h3>Presentación y datos</h3><ul><li>Español / English y nombres duales.</li><li>Estados Entrada / Combate / Máximo.</li><li>Evolución hacia sincronización con catálogo WFCD.</li></ul></div></div></section>
+<section class="sectionCard"><h2>Evolución técnica</h2><p>Empecé con un catálogo local y recursos propios. Después fui ampliando datos, imágenes, filtros y sincronización para dejar de mantener manualmente cada entidad del juego.</p><div class="lockbox">🔒 La versión más reciente y su paquete completo permanecen privados. Las muestras de código provienen de v1.0.</div></section>
+<section class="sectionCard" id="codigo"><h2>Muestra de código</h2><p class="codeIntro">Aquí muestro tres fragmentos de v1.0: persistencia, sanitización/i18n y cálculo de estadísticas, sin publicar la base completa.</p>
+<div class="codeUnit"><h3>1 · Persistencia de builds personales</h3><div class="codebox"><pre><code>const STORAGE = &quot;desco_nova_my_builders_v1&quot;;
+let userBuilds = loadUserBuilds();
+
+function loadUserBuilds() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE) || &quot;[]&quot;);
+  } catch {
+    return [];
+  }
+}
+
+function saveUserBuilds() {
+  localStorage.setItem(STORAGE, JSON.stringify(userBuilds));
+}</code></pre></div></div>
+<div class="codeUnit"><h3>2 · Nombres bilingües y salida segura</h3><div class="codebox"><pre><code>function safe(value) {
+  return String(value ?? &quot;&quot;).replace(/[&amp;&lt;&gt;&quot;&#x27;]/g, ch =&gt; ({
+    &quot;&amp;&quot;: &quot;&amp;amp;&quot;, &quot;&lt;&quot;: &quot;&amp;lt;&quot;, &quot;&gt;&quot;: &quot;&amp;gt;&quot;,
+    &#x27;&quot;&#x27;: &quot;&amp;quot;&quot;, &quot;&#x27;&quot;: &quot;&amp;#39;&quot;
+  }[ch]));
+}
+
+function dualName(obj) {
+  const primary = lang === &quot;es&quot; ? obj.es : obj.en;
+  const secondary = lang === &quot;es&quot; ? obj.en : obj.es;
+  return `${safe(primary)}&lt;span class=&quot;secondary&quot;&gt;${safe(secondary)}&lt;/span&gt;`;
+}</code></pre></div></div>
+<div class="codeUnit"><h3>3 · Estadísticas por estado</h3><div class="codebox"><pre><code>function abilityStats(build, mode) {
+  let strength = 100, duration = 100,
+      range = 100, efficiency = 100;
+
+  [build.exilus, ...build.mods].forEach(name =&gt; {
+    const effect = EFFECTS[name] || {};
+    strength   += effect.strength   || 0;
+    duration   += effect.duration   || 0;
+    range      += effect.range      || 0;
+    efficiency += effect.efficiency || 0;
+  });
+
+  if (mode !== &quot;entry&quot;) {
+    // Arcanos y buffs sostenibles se aplican por estado.
+  }
+
+  return { strength, duration, range,
+           efficiency: Math.min(175, efficiency) };
+}</code></pre></div></div></section>
+<section class="sectionCard"><h2>Qué trabajé aquí</h2><div class="caseGrid"><div class="case"><h3>JavaScript sin framework</h3><p>Estado, persistencia, renderizado y eventos gestionados directamente.</p></div><div class="case"><h3>Modelado de dominio</h3><p>La interfaz refleja conceptos reales del juego en lugar de componentes genéricos.</p></div><div class="case"><h3>Internacionalización</h3><p>Nombres bilingües y una capa de salida sanitizada.</p></div><div class="case"><h3>Iteración</h3><p>La arquitectura evolucionó de dataset local a integración de datos externos.</p></div></div></section></div></main>
+<footer class="wrap footer"><div>Josue Manuel Villarruel Flores · Caso de estudio</div><div>Código seleccionado · Datos sensibles protegidos</div></footer></body></html>

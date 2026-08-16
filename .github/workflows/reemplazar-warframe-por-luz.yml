@@ -1,0 +1,34 @@
+name: Reemplazar Warframe por LUZ en portada
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: contains(github.event.head_commit.message, 'Preparar cambio Warframe por LUZ')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sustituir tarjeta
+        shell: python
+        run: |
+          from pathlib import Path
+          p=Path('index.html')
+          t=p.read_text(encoding='utf-8')
+          old='<article class="card"><div class="tag">HTML · CSS · JavaScript · Gaming</div><h3>NOVA Warframe Builder</h3><p>Construí un builder offline bilingüe para Warframe con presets, filtros, edición local y una base preparada para sincronizar datos externos.</p><ul><li>Español / English y nombres duales</li><li>Builds, Mods, Arcanos, Helminth y Fragmentos</li><li>Evolución documentada de v1.0 a v1.9</li></ul><div class="chips"><span class="chip warn">En desarrollo</span><span class="chip warn">Demo privada 🔒</span><span class="chip">Código seleccionado</span></div><div class="cardActions"><a class="btn accent" href="projects/warframe-builder.html">Ver caso de estudio →</a><a class="btn ghost" href="projects/warframe-builder.html#codigo">Ver código →</a></div></article>'
+          new='<article class="card"><div class="tag">Accesibilidad · Asistencia guiada · Familia</div><h3>LUZ</h3><p>Estoy desarrollando una aplicación para simplificar actividades cotidianas de una persona mayor mediante instrucciones claras, botones grandes, fotografías reales y apoyo de familiares responsables.</p><ul><li>Rutinas e instrucciones paso a paso</li><li>Contacto familiar por mensaje, llamada y WhatsApp</li><li>Configuración administrada por responsables</li></ul><div class="chips"><span class="chip warn">En desarrollo</span><span class="chip">Diseño centrado en accesibilidad</span></div><div class="cardActions"><a class="btn accent" href="projects/luz-asistente.html">Ver proyecto →</a></div></article>'
+          if old not in t:
+              raise SystemExit('No se encontró la tarjeta de Warframe en la portada')
+          t=t.replace(old,new,1)
+          p.write_text(t,encoding='utf-8')
+      - name: Publicar
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Destacar LUZ en lugar de Warframe"
+          git push

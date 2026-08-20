@@ -1,6 +1,7 @@
 from pathlib import Path
 import re
 
+# Aplica la misma navegación visual en portada, páginas extendidas y casos de proyecto.
 TOP_NAV = '<div class="navlinks" id="navLinks"><a href="index.html">Inicio</a><a href="index.html#perfil-detalle">Perfil</a><a href="index.html#experiencia-detalle">Experiencia</a><a href="index.html#proyectos-detalle">Proyectos</a><a href="index.html#tecnologias-detalle">Tecnologías</a><a href="equipo.html">Grupo</a><a href="cv.html">CV</a></div>'
 INDEX_NAV = '<div class="navlinks" id="navLinks"><a href="#inicio">Inicio</a><a href="#perfil-detalle" data-expand="perfil-detalle">Perfil</a><a href="#experiencia-detalle" data-expand="experiencia-detalle">Experiencia</a><a href="#proyectos-detalle" data-expand="proyectos-detalle">Proyectos</a><a href="#tecnologias-detalle" data-expand="tecnologias-detalle">Tecnologías</a><a href="equipo.html">Grupo</a><a href="cv.html">CV</a></div>'
 CV_NAV = '<div class="links"><a href="index.html">Inicio</a><a href="index.html#perfil-detalle">Perfil</a><a href="index.html#experiencia-detalle">Experiencia</a><a href="index.html#proyectos-detalle">Proyectos</a><a href="index.html#tecnologias-detalle">Tecnologías</a><a href="equipo.html">Grupo</a><a href="cv.html">CV</a></div>'

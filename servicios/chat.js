@@ -14,27 +14,40 @@ let inputError='Revisa el dato e inténtalo otra vez.';
 let draft={};
 
 const equipmentOptions=[
-  {label:'PC de escritorio',value:'PC'},
   {label:'Laptop',value:'Laptop'},
-  {label:'Setup de streaming',value:'Streaming'}
+  {label:'PC de escritorio',value:'PC'},
+  {label:'Ensamblaje de un nuevo equipo',value:'Nuevo equipo'}
 ];
-const serviceOptions=[
-  {label:'No enciende o presenta una falla',value:'Diagnóstico',problem:true},
-  {label:'Está lenta o se calienta',value:'Rendimiento / temperatura',problem:true},
-  {label:'Windows o programas fallan',value:'Windows / software',problem:true},
-  {label:'Necesita mantenimiento',value:'Mantenimiento',problem:false},
-  {label:'Quiero mejorar componentes',value:'Upgrade',problem:false},
-  {label:'Gaming: bajos FPS o cierres',value:'Optimización gaming',problem:true},
-  {label:'Configurar OBS o streaming',value:'OBS / streaming',problem:false}
-];
-const priceGuide={
-  'Diagnóstico':{PC:600,Laptop:650,Streaming:600},
-  'Rendimiento / temperatura':{PC:650,Laptop:800,Streaming:650},
-  'Windows / software':{PC:700,Laptop:700,Streaming:700},
-  'Mantenimiento':{PC:650,Laptop:800,Streaming:650},
-  'Upgrade':{PC:300,Laptop:400,Streaming:300},
-  'Optimización gaming':{PC:500,Laptop:600,Streaming:500},
-  'OBS / streaming':{PC:600,Laptop:600,Streaming:600}
+const serviceCatalog={
+  Laptop:[
+    {label:'No enciende o presenta una falla',value:'Diagnóstico',problem:true,price:550},
+    {label:'Está lenta o se calienta',value:'Rendimiento / temperatura',problem:true,price:900},
+    {label:'Windows o programas fallan',value:'Windows / software',problem:true,price:800},
+    {label:'Necesita mantenimiento',value:'Mantenimiento',problem:false,price:900},
+    {label:'Mejorar componentes',value:'Upgrade',problem:false,price:450},
+    {label:'Gaming: bajos FPS o cierres',value:'Optimización gaming',problem:true,price:650},
+    {label:'Asesoría de cómputo',value:'Asesoría de cómputo',problem:false,price:400},
+    {label:'Asesoría de programación',value:'Asesoría de programación',problem:false,price:500}
+  ],
+  PC:[
+    {label:'No enciende o presenta una falla',value:'Diagnóstico',problem:true,price:500},
+    {label:'Está lenta o se calienta',value:'Rendimiento / temperatura',problem:true,price:800},
+    {label:'Windows o programas fallan',value:'Windows / software',problem:true,price:800},
+    {label:'Necesita mantenimiento',value:'Mantenimiento',problem:false,price:800},
+    {label:'Mejorar componentes',value:'Upgrade',problem:false,price:400},
+    {label:'Gaming: bajos FPS o cierres',value:'Optimización gaming',problem:true,price:600},
+    {label:'Configurar OBS o streaming',value:'OBS / streaming',problem:false,price:700},
+    {label:'Asesoría de cómputo',value:'Asesoría de cómputo',problem:false,price:400},
+    {label:'Asesoría de programación',value:'Asesoría de programación',problem:false,price:500}
+  ],
+  'Nuevo equipo':[
+    {label:'Ensamblaje completo',value:'Ensamblaje completo',problem:false,price:900},
+    {label:'Cotización de componentes',value:'Cotización de componentes',problem:false,price:350},
+    {label:'Investigación y comparación',value:'Investigación de componentes',problem:false,price:400},
+    {label:'Validar compatibilidad',value:'Validación de compatibilidad',problem:false,price:350},
+    {label:'Asesoría de compra',value:'Asesoría de compra',problem:false,price:400},
+    {label:'Ensamblaje de setup gaming',value:'Ensamblaje de setup gaming',problem:false,price:1200}
+  ]
 };
 
 function readRequests(){try{return JSON.parse(localStorage.getItem(CHAT_STORAGE))||[]}catch{return []}}
@@ -61,19 +74,25 @@ function askInput(question,placeholder,handler,options={}){
 }
 function finishInput(){chatComposer.hidden=true;chatInput.type='text';chatInput.inputMode='';chatInput.min='';inputHandler=null;inputValidator=null}
 function makeFolio(){
-  const date=new Date();const stamp=`${date.getFullYear()}${String(date.getMonth()+1).padStart(2,'0')}${String(date.getDate()).padStart(2,'0')}`;
-  return `DT-${stamp}-${Math.floor(1000+Math.random()*9000)}`;
+  const existing=new Set(readRequests().map(request=>request.id));let id;
+  do{id=`DT-${Math.floor(10000+Math.random()*90000)}`}while(existing.has(id));
+  return id;
 }
 function dateISO(offset=0){const date=new Date();date.setDate(date.getDate()+offset);return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`}
 function formatDate(iso){return new Intl.DateTimeFormat('es-MX',{weekday:'short',day:'numeric',month:'short'}).format(new Date(`${iso}T12:00:00`))}
-function estimate(){const value=priceGuide[draft.service]?.[draft.device];return value?`Desde $${value.toLocaleString('es-MX')} MXN`:'Sujeta a revisión'}
+function estimate(){return draft.serviceValue?`Aprox. desde $${draft.serviceValue.toLocaleString('es-MX')} MXN`:'Sujeta a revisión'}
 function phoneDigits(value){return value.replace(/\D/g,'')}
+function accountChoice(){
+  const session=window.DescoAccount?.getSession();
+  return session?{label:'Mis tickets',action:()=>window.DescoAccount.open('login')}:{label:'Vincular o crear cuenta',action:()=>window.DescoAccount?.open('register')};
+}
 function mainMenu(greeting=true){
   if(greeting)addMessage('Hola, soy el asistente virtual de DescoTech. Te ayudo a revisar tu caso, obtener una cotización inicial y solicitar un horario.');
   showChoices([
     {label:'Agendar y cotizar',action:startQuote},
     {label:'Consultar mi folio',action:checkRequest},
-    {label:'Ver precios',action:showPrices}
+    {label:'Ver precios',action:showPrices},
+    accountChoice()
   ]);
 }
 function startQuote(){
@@ -92,10 +111,10 @@ function askEquipment(){
   showChoices(equipmentOptions.map(option=>({label:option.label,action:()=>chooseEquipment(option)})));
 }
 function chooseEquipment(option){
-  draft.device=option.value;addMessage('Selecciona la opción que mejor describe lo que necesitas.');
-  showChoices(serviceOptions.map(service=>({label:service.label,action:()=>chooseService(service)})));
+  draft.device=option.value;addMessage(option.value==='Nuevo equipo'?'¿Qué necesitas para tu nuevo equipo?':'Selecciona la opción que mejor describe lo que necesitas.');
+  showChoices(serviceCatalog[option.value].map(service=>({label:service.label,action:()=>chooseService(service)})));
 }
-function chooseService(option){draft.service=option.value;draft.isProblem=option.problem;if(option.problem)askDuration();else askSummary()}
+function chooseService(option){draft.service=option.value;draft.serviceValue=option.price;draft.isProblem=option.problem;if(option.problem)askDuration();else askSummary()}
 function askDuration(){
   addMessage('¿Cuánto tiempo llevas con este problema?');
   showChoices([
@@ -108,7 +127,7 @@ function askDuration(){
 }
 function setDuration(duration){draft.issueDuration=duration;askSummary()}
 function askSummary(){
-  const prompt=draft.isProblem?'Cuéntame qué ocurre, cuándo sucede y si aparece algún mensaje de error.':'Dame un resumen de lo que quieres hacer con tu equipo.';
+  const prompt=draft.isProblem?'Cuéntame qué ocurre, cuándo sucede y si aparece algún mensaje de error.':'Dame un resumen de lo que quieres hacer, tu presupuesto o el uso que tendrá el equipo.';
   askInput(prompt,'Escribe un resumen breve…',value=>{draft.details=value.trim().slice(0,700);askDate()},
     {validate:value=>value.trim().length>=10,error:'Agrega un poco más de información, al menos 10 caracteres.'});
 }
@@ -139,17 +158,22 @@ function showSummary(){
   showChoices([{label:'Confirmar solicitud',action:saveRequest},{label:'Volver a empezar',action:startQuote}]);
 }
 function saveRequest(){
+  const session=window.DescoAccount?.getSession();
   const request={
     id:makeFolio(),createdAt:new Date().toISOString(),updatedAt:new Date().toISOString(),
-    name:draft.name,phone:draft.phone,device:draft.device,service:draft.service,details:draft.details,
+    name:draft.name,phone:draft.phone,device:draft.device,service:draft.service,serviceValue:draft.serviceValue,details:draft.details,
     issueDuration:draft.issueDuration||'No aplica',appointmentDate:draft.appointmentDate,appointmentTime:draft.appointmentTime,
-    estimate:estimate(),status:'new',contactApproved:false,adminReply:'',source:'chat-demo'
+    estimate:estimate(),status:'new',criticality:'normal',economicPriority:draft.serviceValue>=1000?'high':draft.serviceValue>=600?'medium':'low',assignee:'unassigned',
+    contactApproved:false,adminReply:'',source:'chat-demo',accountId:session?.accountId||'',accountEmail:session?.email||''
   };
-  const requests=readRequests();requests.unshift(request);writeRequests(requests);
-  addMessage('', 'bot', `Solicitud y horario registrados.<span class="chatFolio">${escapeHtml(request.id)}</span><br><strong>${escapeHtml(formatDate(request.appointmentDate))} · ${escapeHtml(request.appointmentTime)}</strong><br>Guarda tu folio. La cita y la cotización todavía deben ser confirmadas.<time>${now()}</time>`);
-  showChoices([{label:'Consultar este folio',action:()=>showRequest(request.id)},{label:'Menú principal',action:()=>mainMenu(false)}]);
+  const requests=readRequests();requests.unshift(request);writeRequests(requests);window.DescoAccount?.renderTickets();
+  const accountText=session?'También quedó guardado en “Mis tickets”.':'Crea una cuenta para conservar tus tickets en este dispositivo.';
+  addMessage('', 'bot', `Solicitud y horario registrados.<span class="chatFolio">${escapeHtml(request.id)}</span><br><strong>${escapeHtml(formatDate(request.appointmentDate))} · ${escapeHtml(request.appointmentTime)}</strong><br>Guarda tu folio. ${escapeHtml(accountText)} La cita y la cotización todavía deben ser confirmadas.<time>${now()}</time>`);
+  const choices=[{label:'Consultar este folio',action:()=>showRequest(request.id)}];
+  choices.push(session?{label:'Mis tickets',action:()=>window.DescoAccount.open('login')}:{label:'Crear cuenta',action:()=>window.DescoAccount?.open('register')});
+  choices.push({label:'Menú principal',action:()=>mainMenu(false)});showChoices(choices);
 }
-function checkRequest(){askInput('Escribe el folio que recibiste.','DT-20260921-1234',value=>showRequest(value.trim().toUpperCase()))}
+function checkRequest(){askInput('Escribe el folio que recibiste.','DT-12345',value=>showRequest(value.trim().toUpperCase()))}
 function showRequest(id){
   const request=readRequests().find(item=>item.id===id);
   if(!request){addMessage('No encontré ese folio en este dispositivo. Revisa que esté escrito completo.');showChoices([{label:'Intentar de nuevo',action:checkRequest},{label:'Menú principal',action:()=>mainMenu(false)}]);return}
@@ -165,7 +189,7 @@ function showRequest(id){
   showChoices([{label:'Actualizar estado',action:()=>showRequest(id)},{label:'Menú principal',action:()=>mainMenu(false)}]);
 }
 function showPrices(){
-  addMessage('Referencias iniciales:\n• Mantenimiento PC: desde $650\n• Mantenimiento laptop: desde $800\n• Windows: desde $700\n• Upgrades: desde $300\n• Diagnóstico: desde $600\n• Gaming: desde $500\n• OBS y streaming: desde $600\n\nCada cotización está sujeta al equipo, la falla y las piezas necesarias.');
+  addMessage('Precios iniciales:\n• Mantenimiento PC: aprox. desde $800\n• Mantenimiento laptop: aprox. desde $900\n• Windows: aprox. desde $800\n• Upgrades: aprox. desde $400\n• Diagnóstico: aprox. desde $500\n• Optimización gaming: aprox. desde $600\n• Ensamblaje de equipo: aprox. desde $900\n• Asesoría técnica: aprox. desde $400\n\nEl precio final depende del equipo, la falla, el alcance y las piezas necesarias.');
   showChoices([{label:'Agendar y cotizar',action:startQuote},{label:'Menú principal',action:()=>mainMenu(false)}]);
 }
 function resetChat(){draft={};finishInput();chatMessages.replaceChildren();chatChoices.replaceChildren();mainMenu()}
@@ -186,4 +210,3 @@ document.querySelectorAll('[data-open-chat]').forEach(button=>button.addEventLis
 document.getElementById('chatClose').addEventListener('click',closeChat);
 document.getElementById('chatRestart').addEventListener('click',resetChat);
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!chatPanel.hidden)closeChat()});
-

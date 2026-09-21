@@ -8,21 +8,21 @@ function setMenu(open) {
   menuBtn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
 }
 menuBtn.addEventListener('click', () => setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'));
-nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+nav.querySelectorAll('a,button').forEach(item => item.addEventListener('click', () => setMenu(false)));
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') { setMenu(false); menuBtn.focus(); } });
 document.addEventListener('click', e => { if (!e.target.closest('.nav')) setMenu(false); });
 $('year').textContent = new Date().getFullYear();
 const device = $('device'), service = $('service'), mode = $('mode'), details = $('details');
 const prices = {
-  maintenance:{pc:650,laptop:800,stream:650}, windows:{pc:700,laptop:700,stream:700},
-  upgrade:{pc:300,laptop:400,stream:300}, clone:{pc:500,laptop:550,stream:500},
-  boot:{pc:600,laptop:650,stream:600}, gaming:{pc:500,laptop:600,stream:500},
-  build:{pc:900,laptop:null,stream:900}, obs:{pc:600,laptop:600,stream:600},
-  fresh:{pc:750,laptop:null,stream:750}, ready:{pc:1400,laptop:null,stream:1400},
-  streamer:{pc:1200,laptop:1200,stream:1200}
+  maintenance:{pc:800,laptop:900,build:800}, windows:{pc:800,laptop:800,build:800},
+  upgrade:{pc:400,laptop:450,build:400}, clone:{pc:600,laptop:650,build:600},
+  boot:{pc:500,laptop:550,build:500}, gaming:{pc:600,laptop:650,build:600},
+  build:{pc:900,laptop:null,build:900}, obs:{pc:700,laptop:700,build:700},
+  fresh:{pc:850,laptop:null,build:850}, ready:{pc:1500,laptop:null,build:1500},
+  streamer:{pc:1300,laptop:1300,build:1300}
 };
 const physical = new Set(['maintenance','upgrade','clone','boot','build','fresh','ready']);
-const money = value => value == null ? 'Requiere revisión' : `Desde $${value.toLocaleString('es-MX')} MXN`;
+const money = value => value == null ? 'Requiere revisión' : `Aprox. desde $${value.toLocaleString('es-MX')} MXN`;
 function message() {
   return ['Hola, quiero solicitar una cotización en DescoTech.', '',
     'Equipo: ' + device.selectedOptions[0].textContent,
@@ -67,7 +67,7 @@ $('quoteForm').addEventListener('submit', async e => {
 const packageServices = {'PC Fresh':'fresh', 'Gamer Ready':'ready', 'Streamer Setup':'streamer'};
 document.querySelectorAll('.selectPackage').forEach(btn => btn.addEventListener('click', () => {
   const name = btn.dataset.package;
-  service.value = packageServices[name]; device.value = name === 'Streamer Setup' ? 'stream' : 'pc';
+  service.value = packageServices[name]; device.value = 'pc';
   update(); $('quoteStatus').textContent = `Seleccionaste ${name}. Puedes agregar detalles antes de generar tu solicitud.`;
   $('cotizador').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
   service.focus({preventScroll:true});

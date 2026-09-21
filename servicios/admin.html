@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0d2d42">
   <meta name="robots" content="noindex,nofollow">
   <title>Administrador · DescoTech</title>
-  <link rel="stylesheet" href="admin.css?v=2.2">
+  <link rel="stylesheet" href="admin.css?v=2.3">
 </head>
 <body>
   <header class="adminTopbar">
@@ -32,7 +32,15 @@
     <section class="requestColumn" aria-label="Lista de solicitudes">
       <div class="requestToolbar">
         <div><p class="eyebrow">SOLICITUDES</p><h1>Centro de atención</h1></div>
-        <label class="searchBox"><span>⌕</span><input id="searchRequests" type="search" placeholder="Buscar folio o cliente"></label>
+        <div class="toolbarControls">
+          <label class="searchBox"><span>⌕</span><input id="searchRequests" type="search" placeholder="Buscar folio o cliente"></label>
+          <label class="srOnly" for="requestSort">Ordenar solicitudes</label>
+          <select class="requestSort" id="requestSort">
+            <option value="newest">Más recientes</option>
+            <option value="value">Mayor valor</option>
+            <option value="critical">Críticas primero</option>
+          </select>
+        </div>
       </div>
       <div class="metricRow">
         <article><span>Nuevas</span><strong id="metricNew">0</strong><small>Por revisar</small></article>
@@ -58,6 +66,6 @@
   </dialog>
 
   <div class="adminToast" id="adminToast" role="status" aria-live="polite"></div>
-  <script src="admin.js?v=2.2" defer></script>
+  <script src="admin.js?v=2.3" defer></script>
 </body>
 </html>

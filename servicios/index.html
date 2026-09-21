@@ -3,22 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#071216">
+  <meta name="theme-color" content="#ffffff">
   <meta name="description" content="DescoTech: mantenimiento, reparación, optimización, armado de PC Gamer, upgrades, Windows y configuración de streaming.">
   <title>DescoTech | PC · Gaming · IT</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2.0">
 </head>
 <body>
+  <a class="skipLink" href="#main">Saltar al contenido</a>
   <header class="topbar">
     <div class="shell nav">
       <a class="brand" href="#inicio" aria-label="DescoTech inicio">
         <span class="logo">DT</span>
         <span><strong>DescoTech</strong><small>PC · GAMING · IT</small></span>
       </a>
-      <button class="menu" id="menuBtn" aria-label="Abrir menú">☰</button>
-      <nav id="navLinks">
+      <button class="menu" id="menuBtn" aria-label="Abrir menú" aria-controls="navLinks" aria-expanded="false">☰</button>
+      <nav id="navLinks" aria-label="Navegación principal">
         <a href="#servicios">Servicios</a>
         <a href="#paquetes">Paquetes</a>
+        <a href="#galeria">Galería</a>
         <a href="#cotizador">Cotizador</a>
         <a href="#faq">FAQ</a>
         <a class="navCta" href="#contacto">Cotizar</a>
@@ -26,13 +28,13 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="hero" id="inicio">
       <div class="shell heroGrid">
         <div class="heroCopy">
           <div class="eyebrow">SOPORTE TÉCNICO · PC GAMER · STREAMING</div>
-          <h1>Tu PC funcionando<br><span>como debe.</span></h1>
-          <p class="lead">Diagnóstico, mantenimiento, upgrades, Windows, optimización gaming y configuración de streaming con atención clara y sin venderte cosas que no necesitas.</p>
+          <h1>Tu PC.<br>A punto para<br><span>lo que sigue.</span></h1>
+          <p class="lead">Mantenimiento, reparación y mejoras para trabajar, jugar y transmitir. Atención clara, desde el diagnóstico hasta la puesta a punto.</p>
           <div class="heroActions">
             <a class="btn primary" href="#cotizador">Cotizar mi equipo</a>
             <a class="btn ghost" href="#servicios">Ver servicios</a>
@@ -44,25 +46,10 @@
           </div>
         </div>
 
-        <aside class="heroCard" aria-label="Servicios destacados">
-          <div class="heroCardHead">
-            <span>DESCO<span>TECH</span></span>
-            <small>Servicio técnico</small>
-          </div>
-          <div class="miniStat">
-            <strong>PC & Laptop</strong>
-            <span>Mantenimiento, fallas y upgrades</span>
-          </div>
-          <div class="miniStat">
-            <strong>Gaming</strong>
-            <span>Armado, temperaturas y rendimiento</span>
-          </div>
-          <div class="miniStat">
-            <strong>Streaming</strong>
-            <span>OBS, audio, Spotify y escenas</span>
-          </div>
-          <a href="#cotizador" class="cardLink">Solicitar cotización →</a>
-        </aside>
+        <figure class="heroVisual">
+          <img src="img/hero-pc.webp" srcset="img/hero-pc-small.webp 640w, img/hero-pc.webp 1280w" sizes="(max-width: 900px) 100vw, 52vw" width="1280" height="720" fetchpriority="high" alt="Ilustración de un técnico instalando componentes en una PC">
+          <figcaption><span>HARDWARE · SOFTWARE · STREAMING</span><strong>Cuida tu equipo.<br>Disfruta lo que haces.</strong></figcaption>
+        </figure>
       </div>
     </section>
 
@@ -189,6 +176,16 @@
       </div>
     </section>
 
+    <section class="section shell" id="galeria">
+      <div class="sectionHead"><div><div class="eyebrow">PC · LAPTOP · SETUP</div><h2>Cada equipo tiene<br>su siguiente nivel.</h2></div><p>Desde una limpieza a fondo hasta un setup listo para transmitir. Imágenes ilustrativas de los servicios.</p></div>
+      <div class="galleryGrid">
+        <figure class="galleryCard"><img src="img/limpieza-pc.webp" srcset="img/limpieza-pc-small.webp 640w, img/limpieza-pc.webp 1280w" sizes="(max-width: 680px) 100vw, 50vw" width="1280" height="720" loading="lazy" decoding="async" alt="Ilustración: Limpieza y refrigeración para tu PC."><figcaption><h3>Mantenimiento a fondo</h3><p>Limpieza y refrigeración para tu PC.</p></figcaption></figure>
+        <figure class="galleryCard"><img src="img/laptop-repair.webp" srcset="img/laptop-repair-small.webp 640w, img/laptop-repair.webp 1280w" sizes="(max-width: 680px) 100vw, 50vw" width="1280" height="720" loading="lazy" decoding="async" alt="Ilustración: Revisión interna y mejoras de hardware."><figcaption><h3>Tu laptop, en buenas manos</h3><p>Revisión interna y mejoras de hardware.</p></figcaption></figure>
+        <figure class="galleryCard"><img src="img/streaming-setup.webp" srcset="img/streaming-setup-small.webp 640w, img/streaming-setup.webp 1280w" sizes="(max-width: 680px) 100vw, 50vw" width="1280" height="720" loading="lazy" decoding="async" alt="Ilustración: Configuración de OBS, escenas y audio."><figcaption><h3>Tu espacio para crear</h3><p>Configuración de OBS, escenas y audio.</p></figcaption></figure>
+        <figure class="galleryCard"><img src="img/pc-premium.webp" srcset="img/pc-premium-small.webp 640w, img/pc-premium.webp 1280w" sizes="(max-width: 680px) 100vw, 50vw" width="1280" height="720" loading="lazy" decoding="async" alt="Ilustración: Ensamble, compatibilidad y puesta a punto."><figcaption><h3>Una PC a tu medida</h3><p>Ensamble, compatibilidad y puesta a punto.</p></figcaption></figure>
+      </div>
+    </section>
+
     <section class="section shell" id="cotizador">
       <div class="quoteWrap">
         <div class="quoteIntro">
@@ -196,7 +193,7 @@
           <h2>Cuéntame qué necesita tu equipo.</h2>
           <p>Genera una solicitud clara en menos de un minuto. El precio mostrado es orientativo y puede cambiar después del diagnóstico.</p>
           <div class="quoteBadge">
-            <strong id="estimate">$0</strong>
+            <strong id="estimate" aria-live="polite">Desde $650 MXN</strong>
             <span>estimado inicial</span>
           </div>
         </div>
@@ -222,6 +219,7 @@
               <option value="gaming">Optimización gaming</option>
               <option value="build">Armado completo de PC</option>
               <option value="obs">OBS / streaming</option>
+              <optgroup label="Paquetes"><option value="fresh">Paquete PC Fresh</option><option value="ready">Paquete Gamer Ready</option><option value="streamer">Paquete Streamer Setup</option></optgroup>
             </select>
           </label>
 
@@ -239,9 +237,10 @@
           </label>
 
           <div class="formActions">
-            <button type="button" class="btn primary" id="copyQuote">Generar solicitud</button>
+            <button type="submit" class="btn primary" id="copyQuote">Generar y copiar solicitud</button>
             <a class="btn ghost" id="whatsappBtn" href="#" hidden>Enviar por WhatsApp</a>
           </div>
+          <div class="quoteResult" id="quoteResult" hidden><label for="quoteText">Tu solicitud, lista para enviar</label><textarea id="quoteText" rows="10" readonly></textarea><p class="formNote">Puedes copiarla y enviarla por tu app de mensajería. Generarla no la envía automáticamente.</p></div>
           <p class="formNote" id="quoteStatus" aria-live="polite">No se realizan reparaciones o compras de piezas sin autorización previa.</p>
         </form>
       </div>
@@ -300,11 +299,11 @@
         <strong>DescoTech</strong>
         <span>PC · Gaming · IT</span>
       </div>
-      <div>Servicio técnico independiente · <span id="year"></span></div>
+      <div>Servicio técnico independiente · <span id="year">2026</span> · v2.0</div>
     </div>
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js"></script>
+  <script src="app.js?v=2.0" defer></script>
 </body>
 </html>

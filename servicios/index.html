@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="DescoTech: mantenimiento, reparación, optimización, armado de PC Gamer, upgrades, Windows y configuración de streaming.">
   <title>DescoTech | PC · Gaming · IT</title>
-  <link rel="stylesheet" href="styles.css?v=2.0">
+  <link rel="stylesheet" href="styles.css?v=2.1">
 </head>
 <body>
   <a class="skipLink" href="#main">Saltar al contenido</a>
@@ -23,6 +23,7 @@
         <a href="#galeria">Galería</a>
         <a href="#cotizador">Cotizador</a>
         <a href="#faq">FAQ</a>
+        <button class="navChat" type="button" data-open-chat>Chat</button>
         <a class="navCta" href="#contacto">Cotizar</a>
       </nav>
     </div>
@@ -36,7 +37,7 @@
           <h1>Tu PC.<br>A punto para<br><span>lo que sigue.</span></h1>
           <p class="lead">Mantenimiento, reparación y mejoras para trabajar, jugar y transmitir. Atención clara, desde el diagnóstico hasta la puesta a punto.</p>
           <div class="heroActions">
-            <a class="btn primary" href="#cotizador">Cotizar mi equipo</a>
+            <button class="btn primary" type="button" data-open-chat>Hablar con el asistente</button>
             <a class="btn ghost" href="#servicios">Ver servicios</a>
           </div>
           <div class="trustRow">
@@ -283,10 +284,10 @@
         <div>
           <div class="eyebrow">CONTACTO</div>
           <h2>¿Listo para revisar tu PC?</h2>
-          <p>Genera tu solicitud con el cotizador. Para contacto directo, también puedes escribirme desde mi perfil profesional.</p>
+          <p>El asistente reúne los datos de tu equipo y genera un folio. Después de revisar tu solicitud, se habilita un medio de contacto cuando corresponda.</p>
         </div>
         <div class="contactActions">
-          <a class="btn primary" href="#cotizador">Cotizar ahora</a>
+          <button class="btn primary" type="button" data-open-chat>Iniciar chat</button>
           <a class="btn ghost" href="https://www.linkedin.com/in/josue-villarruel-flores-bb571436a/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
         </div>
       </div>
@@ -299,11 +300,35 @@
         <strong>DescoTech</strong>
         <span>PC · Gaming · IT</span>
       </div>
-      <div>Servicio técnico independiente · <span id="year">2026</span> · v2.0</div>
+      <div>Servicio técnico independiente · <span id="year">2026</span> · v2.1</div>
     </div>
   </footer>
 
+  <button class="chatLauncher" id="chatLauncher" type="button" aria-label="Abrir asistente virtual" aria-controls="chatPanel" aria-expanded="false">
+    <span class="chatLauncherIcon" aria-hidden="true">✦</span>
+    <span>¿Te ayudo?</span>
+    <span class="chatPulse" aria-hidden="true"></span>
+  </button>
+
+  <section class="chatPanel" id="chatPanel" aria-label="Asistente virtual de DescoTech" aria-hidden="true" hidden>
+    <header class="chatHeader">
+      <div class="chatAvatar" aria-hidden="true">DT</div>
+      <div><strong>Asistente DescoTech</strong><span><i></i> Respuestas automáticas</span></div>
+      <button class="chatClose" id="chatClose" type="button" aria-label="Cerrar chat">×</button>
+    </header>
+    <div class="chatNotice">Asistente virtual · Tus datos permanecen en este dispositivo durante esta demostración.</div>
+    <div class="chatMessages" id="chatMessages" role="log" aria-live="polite" aria-relevant="additions"></div>
+    <div class="chatChoices" id="chatChoices"></div>
+    <form class="chatComposer" id="chatComposer" hidden>
+      <label class="srOnly" for="chatInput">Escribe tu respuesta</label>
+      <input id="chatInput" type="text" maxlength="500" autocomplete="off" placeholder="Escribe aquí…">
+      <button type="submit" aria-label="Enviar respuesta">➜</button>
+    </form>
+    <button class="chatRestart" id="chatRestart" type="button">Reiniciar conversación</button>
+  </section>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=2.0" defer></script>
+  <script src="app.js?v=2.1" defer></script>
+  <script src="chat.js?v=2.1" defer></script>
 </body>
 </html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0d2d42">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Administrador · DescoTech</title>
+  <link rel="stylesheet" href="admin.css?v=2.1">
+</head>
+<body>
+  <header class="adminTopbar">
+    <a class="adminBrand" href="./" aria-label="Volver a DescoTech"><span>DT</span><div><strong>DescoTech</strong><small>CENTRO DE ATENCIÓN</small></div></a>
+    <div class="topActions"><span class="demoBadge">Vista demostrativa</span><button class="iconButton" id="contactSettings" type="button" aria-label="Configurar contacto">⚙</button><div class="adminAvatar">JV</div></div>
+  </header>
+
+  <div class="demoNotice"><strong>Prototipo local:</strong> las solicitudes creadas desde el chat aparecen aquí cuando se usa el mismo navegador. El acceso seguro y la sincronización entre dispositivos se conectarán en la siguiente etapa.</div>
+
+  <main class="adminLayout">
+    <aside class="adminSidebar">
+      <div class="sidebarTitle">BANDEJA</div>
+      <nav id="statusFilters" aria-label="Filtros de solicitudes">
+        <button class="filter active" type="button" data-filter="all"><span>▦ Todas</span><b id="countAll">0</b></button>
+        <button class="filter" type="button" data-filter="new"><span>● Nuevas</span><b id="countNew">0</b></button>
+        <button class="filter" type="button" data-filter="reviewing"><span>◷ En revisión</span><b id="countReviewing">0</b></button>
+        <button class="filter" type="button" data-filter="approved"><span>✓ Aprobadas</span><b id="countApproved">0</b></button>
+        <button class="filter" type="button" data-filter="closed"><span>□ Cerradas</span><b id="countClosed">0</b></button>
+      </nav>
+      <div class="sidebarFoot"><a href="./">← Ver página pública</a><button id="restoreDemo" type="button">Restablecer demostración</button></div>
+    </aside>
+
+    <section class="requestColumn" aria-label="Lista de solicitudes">
+      <div class="requestToolbar">
+        <div><p class="eyebrow">SOLICITUDES</p><h1>Centro de atención</h1></div>
+        <label class="searchBox"><span>⌕</span><input id="searchRequests" type="search" placeholder="Buscar folio o cliente"></label>
+      </div>
+      <div class="metricRow">
+        <article><span>Nuevas</span><strong id="metricNew">0</strong><small>Por revisar</small></article>
+        <article><span>En proceso</span><strong id="metricActive">0</strong><small>Solicitudes activas</small></article>
+        <article><span>Aprobadas</span><strong id="metricApproved">0</strong><small>Contacto habilitado</small></article>
+      </div>
+      <div class="requestList" id="requestList"></div>
+    </section>
+
+    <section class="detailColumn" id="detailColumn" aria-label="Detalle de solicitud">
+      <div class="emptyDetail" id="emptyDetail"><span>✦</span><h2>Selecciona una solicitud</h2><p>Aquí podrás revisar el problema, responder al cliente y decidir si compartes el contacto.</p></div>
+      <div id="requestDetail" hidden></div>
+    </section>
+  </main>
+
+  <dialog id="settingsDialog">
+    <form method="dialog" id="settingsForm">
+      <div class="dialogHead"><div><p class="eyebrow">SEGURIDAD</p><h2>Canal de contacto</h2></div><button value="cancel" aria-label="Cerrar">×</button></div>
+      <p>Este dato solo se muestra en la demostración cuando apruebas una solicitud. No se publica dentro del código de la página.</p>
+      <label>Texto o número empresarial<input id="secureContact" type="text" maxlength="120" placeholder="Ej. WhatsApp empresarial: 33…"></label>
+      <div class="dialogActions"><button class="secondary" value="cancel">Cancelar</button><button class="primary" id="saveContact" value="default">Guardar canal</button></div>
+    </form>
+  </dialog>
+
+  <div class="adminToast" id="adminToast" role="status" aria-live="polite"></div>
+  <script src="admin.js?v=2.1" defer></script>
+</body>
+</html>

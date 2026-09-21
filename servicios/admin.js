@@ -9,9 +9,9 @@ let activeFilter='all';
 const $=id=>document.getElementById(id);
 const statusLabels={new:'Nueva',reviewing:'En revisión',waiting:'Falta información',approved:'Aprobada',closed:'Cerrada'};
 const sampleRequests=[
-  {id:'DT-DEMO-1042',createdAt:new Date(Date.now()-18*60000).toISOString(),updatedAt:new Date().toISOString(),name:'Mariana',device:'Laptop',service:'Diagnóstico',details:'Mi laptop se apaga cuando abro programas pesados y se calienta demasiado.',estimate:'Desde $650 MXN',status:'new',contactApproved:false,adminReply:'',source:'demo'},
-  {id:'DT-DEMO-1039',createdAt:new Date(Date.now()-2*3600000).toISOString(),updatedAt:new Date().toISOString(),name:'Carlos',device:'PC',service:'Optimización gaming',details:'Quiero mejorar los FPS y revisar temperaturas antes de cambiar la tarjeta gráfica.',estimate:'Desde $500 MXN',status:'reviewing',contactApproved:false,adminReply:'Ya estamos revisando los datos de tu equipo.',source:'demo'},
-  {id:'DT-DEMO-1031',createdAt:new Date(Date.now()-25*3600000).toISOString(),updatedAt:new Date().toISOString(),name:'Andrea',device:'Streaming',service:'OBS / streaming',details:'Necesito separar la música de Twitch y configurar el micrófono.',estimate:'Desde $600 MXN',status:'approved',contactApproved:true,adminReply:'Tu solicitud fue aprobada. Podemos continuar por el canal autorizado.',source:'demo'}
+  {id:'DT-DEMO-1042',createdAt:new Date(Date.now()-18*60000).toISOString(),updatedAt:new Date().toISOString(),name:'Mariana',phone:'33••••••78',device:'Laptop',service:'Diagnóstico',details:'Mi laptop se apaga cuando abro programas pesados y se calienta demasiado.',issueDuration:'De 2 a 7 días',appointmentDate:new Date().toISOString().slice(0,10),appointmentTime:'12:00 a 17:00',estimate:'Desde $650 MXN',status:'new',contactApproved:false,adminReply:'',source:'demo'},
+  {id:'DT-DEMO-1039',createdAt:new Date(Date.now()-2*3600000).toISOString(),updatedAt:new Date().toISOString(),name:'Carlos',phone:'33••••••32',device:'PC',service:'Optimización gaming',details:'Quiero mejorar los FPS y revisar temperaturas antes de cambiar la tarjeta gráfica.',issueDuration:'Más de un mes',appointmentDate:new Date(Date.now()+86400000).toISOString().slice(0,10),appointmentTime:'Después de las 17:00',estimate:'Desde $500 MXN',status:'reviewing',contactApproved:false,adminReply:'Ya estamos revisando los datos de tu equipo.',source:'demo'},
+  {id:'DT-DEMO-1031',createdAt:new Date(Date.now()-25*3600000).toISOString(),updatedAt:new Date().toISOString(),name:'Andrea',phone:'33••••••33',device:'Streaming',service:'OBS / streaming',details:'Necesito separar la música de Twitch y configurar el micrófono.',issueDuration:'No aplica',appointmentDate:new Date(Date.now()+172800000).toISOString().slice(0,10),appointmentTime:'9:00 a 12:00',estimate:'Desde $600 MXN',status:'approved',contactApproved:true,adminReply:'Tu solicitud fue aprobada. Podemos continuar por el canal autorizado.',source:'demo'}
 ];
 
 function read(){
@@ -27,6 +27,7 @@ function ago(iso){
 }
 function initials(name){return name.split(/\s+/).map(part=>part[0]).join('').slice(0,2).toUpperCase()}
 function escapeHtml(value){return String(value).replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]))}
+function formatDate(value){if(!value)return 'Sin fecha';return new Intl.DateTimeFormat('es-MX',{weekday:'short',day:'numeric',month:'short'}).format(new Date(`${value}T12:00:00`))}
 function getContact(){try{return JSON.parse(localStorage.getItem(CONTACT_KEY))?.value||''}catch{return ''}}
 function toast(text){$('adminToast').textContent=text;$('adminToast').classList.add('show');clearTimeout(window.adminToastTimer);window.adminToastTimer=setTimeout(()=>$('adminToast').classList.remove('show'),2800)}
 function updateCounts(){
@@ -55,9 +56,10 @@ function renderDetail(){
   $('requestDetail').innerHTML=`
     <header class="detailHeader"><div class="detailHeaderTop"><div><h2>${escapeHtml(request.id)}</h2><p>Recibida ${ago(request.createdAt)}</p></div><select class="statusSelect" id="statusSelect" aria-label="Estado de solicitud">${Object.entries(statusLabels).map(([value,label])=>`<option value="${value}"${value===request.status?' selected':''}>${label}</option>`).join('')}</select></div></header>
     <div class="detailBody">
-      <div class="clientCard"><span class="clientAvatar">${escapeHtml(initials(request.name))}</span><div><strong>${escapeHtml(request.name)}</strong><span>Cliente desde el chat</span></div></div>
-      <div class="detailGrid"><div><span>Equipo</span><strong>${escapeHtml(request.device)}</strong></div><div><span>Servicio</span><strong>${escapeHtml(request.service)}</strong></div><div><span>Estimado</span><strong>${escapeHtml(request.estimate||'Requiere revisión')}</strong></div><div><span>Origen</span><strong>Asistente virtual</strong></div></div>
-      <div class="problemBox"><span>MENSAJE DEL CLIENTE</span><p>${escapeHtml(request.details)}</p></div>
+      <div class="clientCard"><span class="clientAvatar">${escapeHtml(initials(request.name))}</span><div><strong>${escapeHtml(request.name)}</strong><span>${request.phone?`Tel. ${escapeHtml(request.phone)}`:'Teléfono no registrado'}</span></div></div>
+      <div class="appointmentCard"><span>CITA SOLICITADA</span><strong>${escapeHtml(formatDate(request.appointmentDate))}</strong><b>${escapeHtml(request.appointmentTime||'Horario pendiente')}</b></div>
+      <div class="detailGrid"><div><span>Equipo</span><strong>${escapeHtml(request.device)}</strong></div><div><span>Servicio</span><strong>${escapeHtml(request.service)}</strong></div><div><span>Tiempo con la falla</span><strong>${escapeHtml(request.issueDuration||'No indicado')}</strong></div><div><span>Cotización inicial</span><strong>${escapeHtml(request.estimate||'Requiere revisión')}</strong></div></div>
+      <div class="problemBox"><span>RESUMEN DEL CLIENTE</span><p>${escapeHtml(request.details)}</p></div>
       <label class="replyLabel">Respuesta para el cliente<textarea id="adminReply" maxlength="500" placeholder="Escribe una actualización…">${escapeHtml(request.adminReply||'')}</textarea></label>
       <div class="detailActions"><button class="primary" id="saveReply" type="button">Guardar respuesta</button><button class="success" id="approveContact" type="button">${request.contactApproved?'Revocar contacto':'Aprobar contacto'}</button><button class="danger" id="closeRequest" type="button">Cerrar solicitud</button></div>
       <div class="contactState${request.contactApproved?' approved':''}"><strong>${request.contactApproved?'Contacto autorizado':'Contacto protegido'}</strong>${request.contactApproved?(contact?escapeHtml(contact):'Configura un canal seguro desde el engrane superior.'):'El cliente todavía no puede ver un número o canal directo.'}</div>
@@ -92,4 +94,3 @@ $('detailColumn').addEventListener('click',event=>{if(event.target.closest('.det
 window.addEventListener('storage',event=>{if(event.key===STORAGE_KEY){read();renderList();renderDetail()}});
 
 read();renderList();
-

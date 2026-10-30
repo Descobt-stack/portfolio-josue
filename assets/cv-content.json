@@ -113,5 +113,51 @@
       "name": "Automatización IT",
       "text": "Scripts para inventario, diagnóstico, mantenimiento y reportes. Los ejemplos públicos están sanitizados y no contienen datos de equipos corporativos."
     }
-  ]
+  ],
+  "resume": {
+    "headline": "Soporte TI empresarial · Automatización con PowerShell",
+    "summary": "Egresado de Ingeniería en Computación con experiencia en soporte TI en sitio para Cuervo a través de Axtel. Atiendo incidencias de Windows, Microsoft 365 y hardware; preparo equipos y automatizo diagnósticos e inventarios con BAT y PowerShell.",
+    "experience": [
+      "Atiendo incidencias presenciales y remotas de Windows 10/11, Microsoft 365, Outlook, hardware, conectividad e impresión.",
+      "Gestiono tickets en ServiceNow: documento diagnóstico y resolución, escalo con evidencia y valido el funcionamiento con el usuario.",
+      "Participo en la renovación de equipos: imágenes de sistema, controladores, instalación de aplicaciones y migración de datos.",
+      "Reviso respaldos con Commvault y doy soporte a SAP GUI, BitLocker, herramientas de seguridad y salas audiovisuales.",
+      "Consolido inventarios y resguardos; automatizo la recopilación de datos y reportes con BAT y PowerShell."
+    ],
+    "skills": [
+      [
+        "Soporte",
+        "Windows 10/11, Microsoft 365, Outlook, ServiceNow, SAP GUI y TeamViewer."
+      ],
+      [
+        "Equipos y conectividad",
+        "BIOS/UEFI, RAM, SSD, controladores, redes, impresión y ClickShare."
+      ],
+      [
+        "Seguridad y respaldo",
+        "BitLocker, Commvault, CrowdStrike y Zscaler dentro del alcance del soporte."
+      ],
+      [
+        "Automatización",
+        "PowerShell, Batch/BAT, CIM/WMI, inventarios y reportes."
+      ]
+    ],
+    "projects": [
+      {
+        "name": "NovaOptimate JV Pro 2.0",
+        "path": "projects/novaoptimate.html",
+        "status": "Beta en pruebas",
+        "tag": "BAT · PowerShell · Windows",
+        "summary": "Toolkit propio para diagnóstico, mantenimiento e inventario de Windows; distingue RAM instalada, utilizable y disponible. Pruebas en equipo propio."
+      },
+      {
+        "name": "Mi Libreta Financiera",
+        "path": "projects/libreta-financiera.html",
+        "status": "Beta cerrada",
+        "tag": "React · TypeScript · PWA",
+        "summary": "Aplicación de finanzas personales con ingresos, gastos, apartados y múltiples libretas. Desarrollo y validación de persistencia local y saldos."
+      }
+    ],
+    "courses": "Cisco Networking Academy: Operating Systems Basics (2024), JavaScript Essentials 1 (2023) y Fundamentos de Python (2025)."
+  }
 }

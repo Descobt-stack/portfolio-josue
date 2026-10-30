@@ -1,0 +1,8 @@
+/* Shared JV mark: one asset, one accessible lockup across the portfolio. */
+.siteHeader .jvBrand{display:inline-flex;align-items:center;gap:10px;flex:0 1 auto;min-width:0;max-width:none!important;margin:0!important;padding:0!important;letter-spacing:0!important;text-decoration:none;color:#173e34;font-weight:700;white-space:normal}
+.jvBadge{width:58px;height:46px;display:grid;place-items:center;flex:0 0 auto;border:1px solid #d2e6d9;border-radius:16px;background:#f3faf6}
+.jvBadge img{display:block;width:50px;height:32px;object-fit:contain}
+.jvWordmark{display:block;font-size:15px;line-height:1.25;font-weight:700;color:#173e34;letter-spacing:-.025em}
+.jvTagline{display:block;margin-top:3px;font-size:7.6px;line-height:1.5;font-weight:550;letter-spacing:.12em;color:#5b786b}
+@media(max-width:600px){.siteHeader .jvBrand{gap:8px}.jvBadge{width:50px;height:43px;border-radius:14px}.jvBadge img{width:43px;height:29px}.jvWordmark{font-size:13px}.jvTagline{font-size:6.4px;letter-spacing:.1em}}
+@media(max-width:360px){.jvWordmark{font-size:12px}.jvBadge{width:44px;height:40px}.jvBadge img{width:38px;height:26px}.jvTagline{font-size:5.9px}}

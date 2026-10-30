@@ -16,7 +16,7 @@ fontroot=Path('/usr/share/fonts/truetype/dejavu')
 pdfmetrics.registerFont(TTFont('CV',str(fontroot/'DejaVuSans.ttf')))
 pdfmetrics.registerFont(TTFont('CV-Bold',str(fontroot/'DejaVuSans-Bold.ttf')))
 pdfmetrics.registerFontFamily('CV',normal='CV',bold='CV-Bold',italic='CV',boldItalic='CV-Bold')
-ink=HexColor('#172b3a'); muted=HexColor('#405666'); accent=HexColor('#087d73')
+ink=HexColor('#173e34'); muted=HexColor('#526f62'); accent=HexColor('#147650')
 styles={
  'name':ParagraphStyle('name',fontName='CV-Bold',fontSize=22,leading=27,textColor=ink,spaceAfter=7),
  'title':ParagraphStyle('title',fontName='CV-Bold',fontSize=10.5,leading=15,textColor=accent,spaceAfter=5),
@@ -26,9 +26,12 @@ styles={
  'body':ParagraphStyle('body',fontName='CV',fontSize=9.2,leading=13.4,textColor=ink,spaceAfter=6),
  'bullet':ParagraphStyle('bullet',fontName='CV',fontSize=9.2,leading=13.4,textColor=ink,leftIndent=10,firstLineIndent=-8,spaceAfter=5),
 }
-def p(text,kind='body'):return Paragraph(text,styles[kind])
+def p(text,kind='body'):
+ if kind=='name':
+  text=f'<img src="{ROOT / "assets/jv-monogram.png"}" width="45" height="27" valign="middle"/> &#160; '+text
+ return Paragraph(text,styles[kind])
 def e(text):return escape(text)
-def link(url,text):return f'<link href="{url}" color="#087d73">{e(text)}</link>'
+def link(url,text):return f'<link href="{url}" color="#147650">{e(text)}</link>'
 out=ROOT/'assets/CV_Josue_Manuel_Villarruel_Flores_2026_PUBLICO.pdf'
 doc=SimpleDocTemplate(str(out),pagesize=A4,rightMargin=43,leftMargin=43,topMargin=36,bottomMargin=42,title='Josué Manuel Villarruel Flores - CV - Octubre 2026',author=D['name'],subject=D['headline'])
 story=[p(e(D['name']),'name'),p(e(D['headline']),'title'),p(e(D['location'])+' | '+link(D['portfolio'],'Portafolio')+' | '+link(D['linkedin'],'LinkedIn')+' | '+link(D['github'],'GitHub'),'small')]

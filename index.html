@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f5faf7">
+  <meta name="theme-color" content="#f6faf7">
   <meta name="description" content="Josué Villarruel: soporte TI, automatización y desarrollo de aplicaciones. Conoce mi experiencia, proyectos y cómo puedo ayudarte.">
   <title>Josué Villarruel | Soporte TI y desarrollo de software</title>
   <link rel="preload" as="image" href="assets/light-hero.webp" media="(min-width:761px)">
@@ -11,16 +11,10 @@
   <link rel="stylesheet" href="assets/dashboard.css">
   <link rel="stylesheet" href="assets/portfolio-background.css">
   <link rel="stylesheet" href="assets/home.css">
-</head>
-<body class="home">
+<link rel="stylesheet" href="assets/site-theme.css"><link rel="stylesheet" href="assets/brand.css"><link rel="icon" type="image/png" sizes="32x32" href="assets/jv-icon-32.png"><link rel="apple-touch-icon" sizes="180x180" href="assets/jv-icon-180.png"><script src="assets/site.js" defer></script></head>
+<body class="home" data-page-kind="projects">
 <a class="skipLink" href="#contenido">Saltar al contenido</a>
-<header class="top">
-  <nav class="shell" aria-label="Navegación principal">
-    <a class="brand" href="#inicio" aria-label="Josué Villarruel, inicio"><span class="mark" aria-hidden="true">JV</span><span>Josué Villarruel<span class="brandCaption">SOPORTE TI & DESARROLLO</span></span></a>
-    <button class="menu" id="menuBtn" aria-label="Abrir menú" aria-controls="navLinks" aria-expanded="false">Menú</button>
-    <div class="navlinks" id="navLinks" aria-label="Secciones del portafolio"><a href="#servicios">Servicios</a><a href="#experiencia-detalle">Experiencia</a><a href="#proyectos-detalle">Proyectos</a><a href="cv.html">Currículum</a><a class="navContact" href="#contacto">Hablemos <span aria-hidden="true">↗</span></a></div>
-  </nav>
-</header>
+<header class="top siteHeader"><nav class="siteNav" aria-label="Navegación principal"><a class="brand jvBrand" href="#inicio" aria-label="Josué Villarruel · Inicio"><span class="jvBadge"><img src="assets/jv-monogram.webp" width="50" height="32" alt="" decoding="async"></span><span class="jvWordmark">Josué Villarruel<span class="jvTagline">SOPORTE TI &amp; DESARROLLO</span></span></a><button class="menu" id="menuBtn" aria-label="Abrir menú" aria-controls="navLinks" aria-expanded="false">Menú</button><div class="navlinks" id="navLinks" aria-label="Secciones del portafolio"><a href="#servicios">Servicios</a><a href="experiencia.html">Experiencia</a><a href="projects.html">Proyectos</a><a href="cv.html">Currículum</a><a class="navContact" href="#contacto">Hablemos <span aria-hidden="true">↗</span></a></div></nav></header>
 <main id="contenido">
   <section class="homeHero" id="inicio" aria-labelledby="hero-title">
     <picture class="heroArtwork" aria-hidden="true"><source media="(max-width:760px)" srcset="assets/light-hero-mobile.webp"><img src="assets/light-hero.webp" width="1600" height="900" alt="" fetchpriority="high" decoding="async"></picture>
@@ -69,25 +63,6 @@
   <section class="contactBand photoSection" id="contacto" aria-labelledby="contact-title"><picture class="sectionPhoto" aria-hidden="true"><source media="(max-width:760px)" srcset="assets/light-contact-mobile.webp"><img src="assets/light-contact.webp" width="1600" height="900" loading="lazy" decoding="async" alt=""></picture><div class="shell contactInner"><div class="eyebrow">CONVERSEMOS</div><h2 id="contact-title">¿Tienes un proyecto<br> o una oportunidad en mente?</h2><p>Cuéntame qué necesitas resolver. Podemos empezar por una conversación.</p><div class="heroActions"><a class="btn primary" href="https://www.linkedin.com/in/josue-villarruel-flores-bb571436a/" target="_blank" rel="noopener noreferrer">Contactar por LinkedIn <span aria-hidden="true">↗</span></a><a class="btn secondary" href="https://github.com/Descobt-stack" target="_blank" rel="noopener noreferrer">Explorar GitHub <span aria-hidden="true">↗</span></a></div><div class="contactLocation">Jalisco, México · Soporte TI, automatización y desarrollo</div></div></section>
 </main>
 <footer class="shell footer"><div>© <span id="year">2026</span> Josué Villarruel<span class="footerSub">Ingeniería en Computación · Portafolio profesional</span></div><div class="footerLinks"><a href="cv.html">CV</a><a href="equipo.html">Equipo</a><a href="https://descobt-stack.github.io/descotech-servicios/" target="_blank" rel="noopener noreferrer">DescoTech ↗</a><a href="#inicio">Volver arriba ↑</a></div></footer>
-<script>
-const menuBtn=document.getElementById('menuBtn'),navLinks=document.getElementById('navLinks');
-function setMenu(open){
- navLinks.classList.toggle('open',open);
- menuBtn.setAttribute('aria-expanded',String(open));
- menuBtn.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
- menuBtn.textContent=open?'Cerrar':'Menú';
-}
-menuBtn.addEventListener('click',()=>setMenu(menuBtn.getAttribute('aria-expanded')!=='true'));
-navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setMenu(false)));
-document.addEventListener('click',event=>{if(!navLinks.contains(event.target)&&!menuBtn.contains(event.target))setMenu(false)});
-document.addEventListener('keydown',event=>{if(event.key==='Escape'&&navLinks.classList.contains('open')){setMenu(false);menuBtn.focus()}});
-const mobileNav=matchMedia('(max-width:820px)');mobileNav.addEventListener('change',()=>setMenu(false));
-const links=[...navLinks.querySelectorAll('a[href^="#"]')];
-if('IntersectionObserver' in window){
- const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;links.forEach(link=>{if(link.hash==='#'+entry.target.id)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current')})})},{rootMargin:'-15% 0px -65% 0px',threshold:0});
- links.forEach(link=>{const section=document.querySelector(link.hash);if(section)observer.observe(section)});
-}
-document.getElementById('year').textContent=new Date().getFullYear();
-</script>
+
 </body>
 </html>

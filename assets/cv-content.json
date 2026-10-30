@@ -1,0 +1,117 @@
+{
+  "updated": "30 de octubre de 2026",
+  "name": "Josué Manuel Villarruel Flores",
+  "headline": "Soporte TI · Automatización · Desarrollo de software",
+  "location": "Tequila, Jalisco, México",
+  "portfolio": "https://descobt-stack.github.io/portfolio-josue/",
+  "github": "https://github.com/Descobt-stack",
+  "linkedin": "https://www.linkedin.com/in/josue-villarruel-flores-bb571436a/",
+  "summary": "Egresado de Ingeniería en Computación con experiencia en soporte TI empresarial en sitio para cliente Cuervo a través de Axtel. Combino diagnóstico de Windows, hardware y aplicaciones con automatización en BAT/PowerShell y desarrollo de aplicaciones web. Documento las soluciones, valido su funcionamiento con el usuario y utilizo IA generativa como apoyo técnico con revisión de resultados.",
+  "role": "Axtel · Soporte TI en sitio para cliente Cuervo",
+  "period": "Marzo de 2026 - actualidad",
+  "site": "Fábrica La Rojeña · Tequila, Jalisco",
+  "experience": [
+    "Atiendo incidencias presenciales y remotas de Windows 10/11, hardware, Microsoft 365, Outlook, conectividad, impresión y aplicaciones empresariales.",
+    "Gestiono tickets en ServiceNow: registro síntomas, documento pruebas y resolución, valido la operación y escalo con evidencia técnica.",
+    "Participo en la renovación y preparación de equipos: migración de datos, imágenes de sistema, controladores, aplicaciones y validación con el usuario.",
+    "Reviso respaldos con Commvault y realizo diagnóstico relacionado con BitLocker, CrowdStrike y Zscaler, dentro del alcance del soporte.",
+    "Doy soporte a SAP GUI, salas audiovisuales, ClickShare, proyectores e impresoras; verifico instalación, conectividad y funcionamiento.",
+    "Consolido inventarios y resguardos, apoyo bajas de equipos y automatizo la recopilación de datos y reportes con BAT y PowerShell."
+  ],
+  "skills": [
+    [
+      "Soporte empresarial",
+      "Windows 10/11, Microsoft 365, Outlook, SharePoint, ServiceNow, TeamViewer y Active Directory."
+    ],
+    [
+      "Equipos y continuidad",
+      "UEFI/BIOS, RAM, SSD/NVMe, controladores, redes, impresión, ClickShare, BitLocker, Commvault, CrowdStrike y Zscaler."
+    ],
+    [
+      "Automatización",
+      "PowerShell, Batch/BAT, consultas CIM/WMI, inventario técnico, diagnóstico y reportes."
+    ],
+    [
+      "Desarrollo aplicado",
+      "JavaScript, TypeScript, React, HTML/CSS, PWA, IndexedDB, GitHub y VS Code. Python y C++ como base de programación."
+    ],
+    [
+      "IA generativa aplicada",
+      "Análisis de requisitos, lectura de código, depuración asistida, prototipado y documentación con pruebas y revisión técnica."
+    ]
+  ],
+  "education": "Ingeniería en Computación · Universidad Tecnológica de Guadalajara (UTEG)",
+  "education_status": "Egresado · titulación pendiente",
+  "courses": [
+    "JavaScript Essentials 1 · Cisco Networking Academy · 2023",
+    "Operating Systems Basics · Cisco Networking Academy · 2024",
+    "Fundamentos de Python · Cisco Networking Academy · 2025"
+  ],
+  "languages": "Español nativo · Inglés intermedio B1",
+  "projects": [
+    {
+      "name": "Mi Libreta Financiera",
+      "tag": "React · TypeScript · PWA · IndexedDB",
+      "status": "Beta cerrada",
+      "path": "projects/libreta-financiera.html",
+      "summary": "Aplicación de finanzas personales con ingresos, gastos, apartados y múltiples libretas. Trabajo en persistencia local, validación de saldos, respaldos y mejoras a partir de pruebas de uso.",
+      "scope": "La versión actual continúa en beta cerrada; la preparación para Android y distribución se trabaja por fases. El portafolio conserva muestras históricas de código."
+    },
+    {
+      "name": "NovaOptimate JV Pro 2.0",
+      "tag": "Windows · BAT · PowerShell",
+      "status": "Beta en pruebas",
+      "path": "projects/novaoptimate.html",
+      "summary": "Toolkit modular para diagnóstico, mantenimiento, inventario y perfiles de uso de Windows. La detección distingue RAM instalada, utilizable y disponible, y considera hardware y energía antes de proponer cambios.",
+      "scope": "Pruebas en equipo propio y mejoras por módulos. No se presentan aumentos de FPS ni resultados de rendimiento como garantizados."
+    },
+    {
+      "name": "Defensor Galáctico",
+      "tag": "JavaScript · React · Controles táctiles · PWA",
+      "status": "Demo pública · en desarrollo",
+      "path": "projects/defensor-galactico.html",
+      "summary": "Videojuego de acción espacial para PC y móvil. Desarrollo la progresión por sectores, enemigos y jefes, armas, habilidades, interfaz adaptable y controles táctiles configurables.",
+      "scope": "El juego evoluciona mediante pruebas de dificultad, legibilidad del HUD y respuesta de los controles. La demo publicada es una versión de desarrollo.",
+      "url": "https://defensor-galactico-nova.josuepmvf.chatgpt.site"
+    },
+    {
+      "name": "DescoTech",
+      "tag": "HTML · CSS · JavaScript · localStorage",
+      "status": "Demo pública",
+      "path": "projects/descotech.html",
+      "summary": "Portal de servicios técnicos con catálogo, cotización aproximada, agenda y seguimiento de solicitudes. Implementé la experiencia de navegación y formularios en una demostración estática.",
+      "scope": "Las cuentas y solicitudes de la demo se guardan en el navegador. La autenticación y persistencia para clientes reales requieren una fase posterior.",
+      "url": "https://descobt-stack.github.io/descotech-servicios/"
+    },
+    {
+      "name": "Entre Nosotros",
+      "tag": "Android · Capacitor · JavaScript · Supabase",
+      "status": "Pruebas privadas",
+      "path": "projects/entre-nosotros.html",
+      "summary": "Aplicación Android privada para recuerdos compartidos. Integro cuentas individuales, álbum, contenido interactivo y sincronización; trabajo en compilación y firma estable de APK con GitHub Actions.",
+      "scope": "La vinculación y sincronización entre dos dispositivos continúan en validación. No publico cuentas, fotografías, archivos privados ni enlaces de instalación."
+    },
+    {
+      "name": "DAL",
+      "tag": "Asistente local · Modelos de lenguaje · Escritorio",
+      "status": "Prototipo privado",
+      "path": "projects/dal.html",
+      "summary": "Asistente local en evolución hacia una aplicación de escritorio. Exploro modelos de lenguaje y ajustes de respuesta para equilibrar rapidez, utilidad y consumo de recursos.",
+      "scope": "La interfaz de escritorio y las pruebas de modelos siguen en desarrollo. Voz, visión y versión móvil forman parte de la exploración, sin presentarlas como funciones terminadas."
+    }
+  ],
+  "labs": [
+    {
+      "name": "DescoClips",
+      "text": "Prototipo privado para encontrar y seleccionar momentos de League of Legends. El recorte, la calidad de salida y la automatización siguen en validación."
+    },
+    {
+      "name": "Configuración de GPU",
+      "text": "Prototipo de aplicación de escritorio para detectar componentes y proponer perfiles de calidad, equilibrio y rendimiento. La aplicación de ajustes y el empaquetado siguen en corrección."
+    },
+    {
+      "name": "Automatización IT",
+      "text": "Scripts para inventario, diagnóstico, mantenimiento y reportes. Los ejemplos públicos están sanitizados y no contienen datos de equipos corporativos."
+    }
+  ]
+}
